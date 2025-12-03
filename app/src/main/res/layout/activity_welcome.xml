@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:orientation="vertical">
 
     <!-- картинка -->
     <ImageView
@@ -18,11 +17,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
         android:text="Добро пожаловать в систему управления складом!"
         android:textAlignment="center"
         android:padding="14dp"
-        android:textColor="#000000"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -30,7 +28,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -39,9 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#1F2937"
+            android:backgroundTint="@color/button_background"
             android:text="Товары"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
@@ -49,19 +46,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#1F2937"
+            android:backgroundTint="@color/button_background"
             android:text="Категории"
-            android:textColor="#FFFFFF"
-            android:textSize="@dimen/_16sp" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnProviders"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#1F2937"
+            android:backgroundTint="@color/button_background"
             android:text="Поставщики"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
@@ -69,9 +66,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#1F2937"
+            android:backgroundTint="@color/button_background"
             android:text="Поставки"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
@@ -79,18 +76,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#1F2937"
+            android:backgroundTint="@color/button_background"
             android:text="Отгрузки"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnWriteOffs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#1F2937"
+            android:backgroundTint="@color/button_background"
             android:text="Списания"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
     </LinearLayout>

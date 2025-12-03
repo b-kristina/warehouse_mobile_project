@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="button_background">#253141</color>
+    <color name="screen_background">#1F2937</color>
+
+    <!-- Кнопка "Фильтры" в тёмной теме -->
+    <color name="filter_button_background">#253141</color>
+
+    <!-- Фон диалога  -->
+    <color name="filter_dialog_background">#1F2937</color>
+</resources>

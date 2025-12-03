@@ -2,14 +2,15 @@ package ru.vsu.warehouse.features.products.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import ru.vsu.warehouse.data.model.Product
+import ru.vsu.warehouse.data.model.ProductResponse
 import ru.vsu.warehouse.databinding.ItemProductBinding
 
 class ProductAdapter(
-    private val products: List<Product>,
-    private val onItemClick: (Product) -> Unit = {}
-) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+    private val onItemClick: (ProductResponse) -> Unit
+) : PagingDataAdapter<ProductResponse, ProductAdapter.ProductViewHolder>(PRODUCT_COMPARATOR) {
 
     class ProductViewHolder(val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -20,14 +21,30 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = products[position]
-        with(holder.binding) {
-            tvTitle.text = product.productTitle
-            tvCategories.text = product.categoryTitles.joinToString(", ")
-            tvCount.text = "Количество: ${product.currentCount}"
+        val product = getItem(position)
+        if (product != null) {
+            with(holder.binding) {
+                tvTitle.text = product.productTitle
+                tvCategories.text = product.categoryTitles.joinToString(", ")
+                tvCount.text = "Количество: ${product.currentCount}"
+
+
+                btnEdit.setOnClickListener {
+                    onItemClick(product)
+                }
+            }
         }
-        holder.itemView.setOnClickListener { onItemClick(product) }
     }
 
-    override fun getItemCount() = products.size
+    companion object {
+        private val PRODUCT_COMPARATOR = object : DiffUtil.ItemCallback<ProductResponse>() {
+            override fun areItemsTheSame(oldItem: ProductResponse, newItem: ProductResponse): Boolean {
+                return oldItem.productId == newItem.productId
+            }
+
+            override fun areContentsTheSame(oldItem: ProductResponse, newItem: ProductResponse): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

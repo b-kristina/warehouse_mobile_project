@@ -10,24 +10,48 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Название товара"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="Название товара" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textSize="14sp"
-        android:text="Категории" />
+        android:layout_marginTop="8dp"
+        android:text="Категории"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/tvCount"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:text="Количество: 0" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Количество: 0"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/filter_button_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="Изменить"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
