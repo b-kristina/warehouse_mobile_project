@@ -71,8 +71,12 @@ class ProductsActivity : AppCompatActivity() {
             try {
                 val api = ru.vsu.warehouse.data.api.RetrofitClient.api
                 allCategories = api.getAllCategories()
+
+                if (selectedCategoryIds.isEmpty()) {
+                    selectedCategoryIds.addAll(allCategories.map { it.categoryId })
+                }
             } catch (e: Exception) {
-                // Ошибка не ломает основной функционал
+                // ...
             }
         }
     }
@@ -87,7 +91,7 @@ class ProductsActivity : AppCompatActivity() {
         val categoryListView = dialogView.findViewById<ListView>(R.id.listViewCategories)
         val checkboxAll = dialogView.findViewById<CheckBox>(R.id.checkboxAll)
 
-        // 🔥 Восстанавливаем текущий фильтр по наличию
+        // Восстанавливаем текущий фильтр по наличию
         when (selectedFilter) {
             "in_stock" -> radioGroup.check(R.id.radioInStock)
             "out_of_stock" -> radioGroup.check(R.id.radioOutOfStock)
@@ -105,7 +109,7 @@ class ProductsActivity : AppCompatActivity() {
             categoryListView.adapter = adapter
             categoryListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
 
-            // 🔥 Восстанавливаем выбранные категории
+            // Восстанавливаем выбранные категории
             for (i in allCategories.indices) {
                 val isSelected = selectedCategoryIds.contains(allCategories[i].categoryId)
                 categoryListView.setItemChecked(i, isSelected)

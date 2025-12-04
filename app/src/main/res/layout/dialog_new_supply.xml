@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Товар -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Товар *"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/editTextNewProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Название нового товара"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Категории -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Категории"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+
+        <ListView
+            android:id="@+id/listViewCategories"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Поставщик -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Поставщик *"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerProvider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/editTextNewProviderName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Название компании"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/editTextNewProviderInn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ИНН (12 цифр)"
+            android:inputType="number"
+            android:maxLength="12"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/editTextNewProviderCompany"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Организация"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/editTextNewProviderAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Адрес"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Количество и дата -->
+        <EditText
+            android:id="@+id/editTextQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Количество"
+            android:inputType="number"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Дата (гггг-мм-дд)"
+            android:inputType="date"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RadioGroup
+        android:id="@+id/radioGroupFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Все поставщики" />
+
+        <RadioButton
+            android:id="@+id/radioIP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ИП" />
+
+        <RadioButton
+            android:id="@+id/radioLLC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ООО" />
+
+        <RadioButton
+            android:id="@+id/radioOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Остальные" />
+
+    </RadioGroup>
+
+</LinearLayout>

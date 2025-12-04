@@ -7,22 +7,31 @@
     android:background="?android:attr/selectableItemBackground">
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvProviderName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Название товара"
-        android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:text="Название поставщика" />
 
     <TextView
-        android:id="@+id/tvCategories"
+        android:id="@+id/tvCompanyName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Категории"
+        android:textSize="14sp"
         android:textColor="?android:attr/textColorSecondary"
-        android:textSize="14sp" />
+        android:text="Компания" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:text="Адрес" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,13 +41,13 @@
         android:layout_marginTop="3dp">
 
         <TextView
-            android:id="@+id/tvCount"
+            android:id="@+id/tvInn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Количество: 0"
+            android:textSize="14sp"
             android:textColor="?android:attr/textColorSecondary"
-            android:textSize="14sp" />
+            android:text="ИНН: 123456789012" />
 
         <Button
             android:id="@+id/btnEdit"

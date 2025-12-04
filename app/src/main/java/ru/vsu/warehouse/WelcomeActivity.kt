@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import ru.vsu.warehouse.features.categories.view.CategoriesActivity
 import ru.vsu.warehouse.features.products.view.ProductsActivity
+import ru.vsu.warehouse.features.providers.view.ProvidersActivity
+import ru.vsu.warehouse.features.supplies.view.SuppliesActivity
 
 class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,15 +21,13 @@ class WelcomeActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnCategories).setOnClickListener {
             startActivity(Intent(this, CategoriesActivity::class.java))
         }
-
-        val placeholderClickListener = {
-
-
+        findViewById<Button>(R.id.btnProviders).setOnClickListener {
+            startActivity(Intent(this, ProvidersActivity::class.java))
+        }
+        findViewById<Button>(R.id.btnSupplies).setOnClickListener {
+            startActivity(Intent(this, SuppliesActivity::class.java))
         }
 
-//        findViewById<Button>(R.id.btnSupplies).setOnClickListener(placeholderClickListener)
-//        findViewById<Button>(R.id.btnShipments).setOnClickListener(placeholderClickListener)
-//        findViewById<Button>(R.id.btnWriteOffs).setOnClickListener(placeholderClickListener)
 
         // navigation 3 реализация навигации в андройд на хабре,  material.io
     }
