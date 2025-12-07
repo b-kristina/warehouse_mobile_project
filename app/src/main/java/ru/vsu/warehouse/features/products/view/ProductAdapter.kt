@@ -28,10 +28,6 @@ class ProductAdapter(
                 tvCategories.text = product.categoryTitles.joinToString(", ")
                 tvCount.text = "Количество: ${product.currentCount}"
 
-
-                btnEdit.setOnClickListener {
-                    onItemClick(product)
-                }
             }
         }
     }
@@ -46,5 +42,9 @@ class ProductAdapter(
                 return oldItem == newItem
             }
         }
+    }
+
+    fun getProductAt(position: Int): ProductResponse {
+        return getItem(position) ?: throw IllegalStateException("Item not found at $position")
     }
 }

@@ -7,6 +7,7 @@ import android.widget.Button
 import ru.vsu.warehouse.features.categories.view.CategoriesActivity
 import ru.vsu.warehouse.features.products.view.ProductsActivity
 import ru.vsu.warehouse.features.providers.view.ProvidersActivity
+import ru.vsu.warehouse.features.shipments.view.ShipmentsActivity
 import ru.vsu.warehouse.features.supplies.view.SuppliesActivity
 
 class WelcomeActivity : AppCompatActivity() {
@@ -14,7 +15,6 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        // кнопка "Товары"
         findViewById<Button>(R.id.btnProducts).setOnClickListener {
             startActivity(Intent(this, ProductsActivity::class.java))
         }
@@ -26,6 +26,9 @@ class WelcomeActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.btnSupplies).setOnClickListener {
             startActivity(Intent(this, SuppliesActivity::class.java))
+        }
+        findViewById<Button>(R.id.btnShipments).setOnClickListener {
+            startActivity(Intent(this, ShipmentsActivity::class.java))
         }
 
 

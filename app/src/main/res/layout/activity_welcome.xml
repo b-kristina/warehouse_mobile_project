@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/screen_background">
 
     <!-- картинка -->
     <ImageView
@@ -31,64 +33,76 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnProducts"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/button_background"
             android:text="Товары"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="24dp"
+            app:backgroundTint="@color/button_background" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCategories"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/button_background"
             android:text="Категории"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="24dp"
+            app:backgroundTint="@color/button_background" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnProviders"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/button_background"
             android:text="Поставщики"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="24dp"
+            app:backgroundTint="@color/button_background" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSupplies"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/button_background"
             android:text="Поставки"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="24dp"
+            app:backgroundTint="@color/button_background" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnShipments"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/button_background"
             android:text="Отгрузки"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="24dp"
+            app:backgroundTint="@color/button_background" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWriteOffs"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/button_background"
             android:text="Списания"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="24dp"
+            app:backgroundTint="@color/button_background" />
 
     </LinearLayout>
 

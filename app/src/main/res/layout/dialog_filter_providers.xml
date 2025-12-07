@@ -1,40 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/screen_background">
 
-    <RadioGroup
-        android:id="@+id/radioGroupFilter"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <RadioButton
-            android:id="@+id/radioAll"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Все поставщики" />
+            android:text="Тип поставщика:"
+            android:textStyle="bold"
+            android:textColor="@color/dialog_text"
+            android:layout_marginBottom="12dp" />
 
-        <RadioButton
-            android:id="@+id/radioIP"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroupFilter"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ИП" />
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/radioLLC"
-            android:layout_width="wrap_content"
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Все поставщики"
+                android:textColor="@color/dialog_text" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioIP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ИП"
+                android:textColor="@color/dialog_text"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioLLC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ООО"
+                android:textColor="@color/dialog_text"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Остальные"
+                android:textColor="@color/dialog_text"
+                android:layout_marginTop="8dp" />
+
+        </RadioGroup>
+
+        <!-- Кнопки -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ООО" />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="end">
 
-        <RadioButton
-            android:id="@+id/radioOther"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Остальные" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilterCancel"
+                style="@style/DialogButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Отмена" />
 
-    </RadioGroup>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilterApply"
+                style="@style/DialogButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Применить" />
 
-</LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -5,49 +5,46 @@
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
+    app:cardElevation="6dp"
     app:cardBackgroundColor="@color/screen_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_marginTop="8dp">
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dialog_text"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Товары"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/dialog_text"
-                android:layout_marginStart="16dp" />
+            android:gravity="end">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonFilter"
+                android:id="@+id/btnCancel"
                 style="@style/DialogButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="openFilterDialog"
-                android:text="Фильтры"
-                android:textSize="13sp" />
+                android:text="Отмена" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConfirm"
+                style="@style/DialogButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Удалить"
+                app:backgroundTint="@color/swipe_delete_background" />
 
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewProducts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

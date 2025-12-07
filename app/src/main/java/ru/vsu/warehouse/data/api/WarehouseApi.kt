@@ -9,8 +9,10 @@ import ru.vsu.warehouse.data.model.CategoryResponse
 import ru.vsu.warehouse.data.model.ProductSimpleResponse
 import ru.vsu.warehouse.data.model.ProviderResponse
 import ru.vsu.warehouse.data.model.ProviderSimpleResponse
+import ru.vsu.warehouse.data.model.ShipmentResponse
 import ru.vsu.warehouse.data.model.SupplyResponse
 import ru.vsu.warehouse.features.providers.data.model.ProviderUpdateRequest
+import ru.vsu.warehouse.features.shipments.data.model.ShipmentCreateRequest
 import ru.vsu.warehouse.features.supplies.data.model.SupplyCreateRequest
 
 interface WarehouseApi {
@@ -74,4 +76,24 @@ interface WarehouseApi {
 
     @GET("api/providers/simple")
     suspend fun getSimpleProviders(): List<ProviderSimpleResponse>
+
+    // отгрузки
+    @GET("api/shipments/filtered")
+    suspend fun getShipments(
+        @Query("providerIds") providerIds: List<Int>? = null,
+        @Query("page") page: Int = 0,
+        @Query("size") size: Int = 15
+    ): PageResponse<ShipmentResponse>
+
+    @POST("api/shipments")
+    suspend fun createShipment(@Body request: ShipmentCreateRequest): ShipmentResponse
+
+    @DELETE("api/shipments/{id}")
+    suspend fun deleteShipment(@Path("id") id: Int): Response<Unit>
+
+    @GET("api/shipments/simple")
+    suspend fun getSimpleProductsForShipments(): List<ProductSimpleResponse>
+
+    @GET("api/shipments/providers/simple")
+    suspend fun getSimpleProvidersForShipments(): List<ProviderSimpleResponse>
 }

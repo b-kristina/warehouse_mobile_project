@@ -34,12 +34,13 @@ class SupplyAdapter(
             tvCategories.text = supply.categoryTitles.joinToString(", ") { it }
             tvProviderName.text = supply.providerName
             tvQuantity.text = "Количество: ${supply.supplyQuantity}"
-
-            btnDelete.setOnClickListener {
-                onDeleteClick(supply.supplyId)
-            }
         }
     }
 
     override fun getItemCount() = supplies.size
+
+    fun getSupplyAt(position: Int): SupplyResponse {
+        return supplies[position]
+    }
+
 }

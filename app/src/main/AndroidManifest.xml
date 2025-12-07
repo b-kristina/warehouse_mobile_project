@@ -33,6 +33,10 @@
         <activity
             android:name=".features.supplies.view.SuppliesActivity"
             android:exported="false" />
+        <!--    отгрузки    -->
+        <activity
+            android:name=".features.shipments.view.ShipmentsActivity"
+            android:exported="false" />
 
         <activity
             android:name=".WelcomeActivity"

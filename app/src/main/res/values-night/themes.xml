@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Тёмная тема БЕЗ ActionBar -->
-    <style name="Base.AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
-        <item name="android:windowBackground">@color/screen_background</item>
+    <!-- Тёмная тема -->
+    <style name="Base.AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue_300</item>
         <item name="colorPrimaryVariant">@color/blue_700</item>
         <item name="colorOnPrimary">@color/black</item>
@@ -11,12 +11,22 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:windowLightStatusBar">false</item>
-    </style>
-
-    <style name="DialogTheme" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="android:windowBackground">@color/filter_dialog_background</item>
-        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/screen_background</item>
     </style>
 
     <style name="AppTheme" parent="Base.AppTheme" />
+
+    <!-- 💬 Диалог: тёмная -->
+    <style name="DialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:textColorPrimary">@color/dialog_text</item>
+    </style>
+
+    <!-- 🎨 Кнопки диалога: тёмная -->
+    <style name="DialogButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/dialog_button</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
+
 </resources>

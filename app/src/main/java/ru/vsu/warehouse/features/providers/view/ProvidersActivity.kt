@@ -12,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.launch
 import ru.vsu.warehouse.R
 import ru.vsu.warehouse.data.model.ProviderResponse
 import ru.vsu.warehouse.databinding.ActivityProvidersBinding
-import ru.vsu.warehouse.databinding.DialogEditProviderBinding
+import ru.vsu.warehouse.utils.SwipeToEditCallback
 
 class ProvidersActivity : AppCompatActivity() {
 
@@ -36,6 +38,13 @@ class ProvidersActivity : AppCompatActivity() {
             openEditDialog(provider)
         }
         binding.recyclerViewProviders.adapter = adapter
+
+        // Подключаем свайп (как в ProductsActivity)
+        val swipeCallback = SwipeToEditCallback(this) { position ->
+            val provider = adapter.getProviderAt(position)
+            openEditDialogWithSwipe(provider, adapter, position)
+        }
+        ItemTouchHelper(swipeCallback).attachToRecyclerView(binding.recyclerViewProviders)
 
         // Подписка на список поставщиков
         lifecycleScope.launch {
@@ -61,46 +70,16 @@ class ProvidersActivity : AppCompatActivity() {
         viewModel.loadProviders()
     }
 
-    private fun openEditDialog(provider: ProviderResponse) {
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_provider, null)
-        val editTextName = dialogView.findViewById<EditText>(R.id.editTextProviderName)
-        val editTextInn = dialogView.findViewById<EditText>(R.id.editTextInn)
-        val editTextCompany = dialogView.findViewById<EditText>(R.id.editTextCompanyName)
-        val editTextAddress = dialogView.findViewById<EditText>(R.id.editTextAddress)
-
-        editTextName.setText(provider.providerName)
-        editTextInn.setText(provider.inn)
-        editTextCompany.setText(provider.companyName)
-        editTextAddress.setText(provider.companyAddress)
-
-        AlertDialog.Builder(this, R.style.DialogTheme)
-            .setTitle("Редактировать поставщика")
-            .setView(dialogView)
-            .setPositiveButton("Сохранить") { _, _ ->
-                val name = editTextName.text.toString().trim()
-                val inn = editTextInn.text.toString().trim()
-                val company = editTextCompany.text.toString().trim()
-                val address = editTextAddress.text.toString().trim()
-
-                if (name.isEmpty() || inn.isEmpty() || company.isEmpty() || address.isEmpty()) {
-                    Toast.makeText(this, "Все поля обязательны", Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-                if (inn.length != 12 || !inn.all { it.isDigit() }) {
-                    Toast.makeText(this, "ИНН должен содержать 12 цифр", Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-
-                viewModel.updateProvider(provider.providerId, name, inn, company, address)
-            }
-            .setNegativeButton("Отмена", null)
-            .show()
+    fun openFilterDialog(view: View) {
+        showFilterDialog()
     }
 
     private fun showFilterDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_filter_providers, null)
         val radioGroup = dialogView.findViewById<RadioGroup>(R.id.radioGroupFilter)
-        
+        val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnFilterCancel)
+        val btnApply = dialogView.findViewById<MaterialButton>(R.id.btnFilterApply)
+
         when (selectedFilter) {
             "IP" -> radioGroup.check(R.id.radioIP)
             "LLC" -> radioGroup.check(R.id.radioLLC)
@@ -108,24 +87,127 @@ class ProvidersActivity : AppCompatActivity() {
             else -> radioGroup.check(R.id.radioAll)
         }
 
-        AlertDialog.Builder(this, R.style.DialogTheme)
-            .setTitle("Фильтры")
+        val dialog = AlertDialog.Builder(this, R.style.DialogTheme)
             .setView(dialogView)
-            .setPositiveButton("Применить") { _, _ ->
-                selectedFilter = when (radioGroup.checkedRadioButtonId) {
-                    R.id.radioIP -> "IP"
-                    R.id.radioLLC -> "LLC"
-                    R.id.radioOther -> "OTHER"
-                    else -> "all"
-                }
+            .setCancelable(true)
+            .create()
 
-                val filterValue = if (selectedFilter == "all") null else selectedFilter
-                viewModel.loadProviders(filterValue)
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnApply.setOnClickListener {
+            selectedFilter = when (radioGroup.checkedRadioButtonId) {
+                R.id.radioIP -> "IP"
+                R.id.radioLLC -> "LLC"
+                R.id.radioOther -> "OTHER"
+                else -> "all"
             }
-            .setNegativeButton("Отмена", null)
-            .show()
+
+            val filterValue = if (selectedFilter == "all") null else selectedFilter
+            viewModel.loadProviders(filterValue)
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
-    fun openFilterDialog(view: View) {
-        showFilterDialog()
+
+    private fun openEditDialog(provider: ProviderResponse) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_provider, null)
+        val editTextName = dialogView.findViewById<EditText>(R.id.editTextProviderName)
+        val editTextInn = dialogView.findViewById<EditText>(R.id.editTextInn)
+        val editTextCompany = dialogView.findViewById<EditText>(R.id.editTextCompanyName)
+        val editTextAddress = dialogView.findViewById<EditText>(R.id.editTextAddress)
+        val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnCancel)
+        val btnSave = dialogView.findViewById<MaterialButton>(R.id.btnSave)
+
+        editTextName.setText(provider.providerName)
+        editTextInn.setText(provider.inn)
+        editTextCompany.setText(provider.companyName)
+        editTextAddress.setText(provider.companyAddress)
+
+        val dialog = AlertDialog.Builder(this, R.style.DialogTheme)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnSave.setOnClickListener {
+            val name = editTextName.text.toString().trim()
+            val inn = editTextInn.text.toString().trim()
+            val company = editTextCompany.text.toString().trim()
+            val address = editTextAddress.text.toString().trim()
+
+            if (name.isEmpty() || inn.isEmpty() || company.isEmpty() || address.isEmpty()) {
+                Toast.makeText(this, "Все поля обязательны", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (inn.length != 12 || !inn.all { it.isDigit() }) {
+                Toast.makeText(this, "ИНН должен содержать 12 цифр", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            viewModel.updateProvider(provider.providerId, name, inn, company, address)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun openEditDialogWithSwipe(
+        provider: ProviderResponse,
+        adapter: ProviderAdapter,
+        position: Int
+    ) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_provider, null)
+        val editTextName = dialogView.findViewById<EditText>(R.id.editTextProviderName)
+        val editTextInn = dialogView.findViewById<EditText>(R.id.editTextInn)
+        val editTextCompany = dialogView.findViewById<EditText>(R.id.editTextCompanyName)
+        val editTextAddress = dialogView.findViewById<EditText>(R.id.editTextAddress)
+        val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnCancel)
+        val btnSave = dialogView.findViewById<MaterialButton>(R.id.btnSave)
+
+        editTextName.setText(provider.providerName)
+        editTextInn.setText(provider.inn)
+        editTextCompany.setText(provider.companyName)
+        editTextAddress.setText(provider.companyAddress)
+
+        val dialog = AlertDialog.Builder(this, R.style.DialogTheme)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+
+        btnCancel.setOnClickListener {
+            adapter.notifyItemChanged(position)
+            dialog.dismiss()
+        }
+
+        btnSave.setOnClickListener {
+            val name = editTextName.text.toString().trim()
+            val inn = editTextInn.text.toString().trim()
+            val company = editTextCompany.text.toString().trim()
+            val address = editTextAddress.text.toString().trim()
+
+            if (name.isEmpty() || inn.isEmpty() || company.isEmpty() || address.isEmpty()) {
+                Toast.makeText(this, "Все поля обязательны", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (inn.length != 12 || !inn.all { it.isDigit() }) {
+                Toast.makeText(this, "ИНН должен содержать 12 цифр", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            viewModel.updateProvider(provider.providerId, name, inn, company, address)
+            dialog.dismiss()
+        }
+
+        dialog.setOnDismissListener {
+            adapter.notifyItemChanged(position)
+        }
+
+        dialog.show()
     }
 }

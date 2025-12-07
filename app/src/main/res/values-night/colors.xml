@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="button_background">#253141</color>
+    <!-- Фон экрана -->
     <color name="screen_background">#1F2937</color>
 
-    <!-- Кнопка "Фильтры" в тёмной теме -->
-    <color name="filter_button_background">#253141</color>
+    <!-- Диалог: тёмная тема -->
+    <color name="dialog_background">#1F2937</color>
+    <color name="dialog_text">#FFFFFF</color>
+    <color name="dialog_button">#253141</color>
 
-    <!-- Фон диалога  -->
-    <color name="filter_dialog_background">#1F2937</color>
+    <!-- 🔹 Добавляем недостающие -->
+    <color name="filter_button_background">#253141</color>
+    <color name="button_background">#253141</color>
+
+    <!-- Синие оттенки -->
+    <color name="blue_800">#1F2937</color>
+    <color name="blue_900">#111827</color>
+    <color name="blue_300">#93C5FD</color>
+    <color name="blue_700">#3B82F6</color>
+
+    <!-- Swipe -->
+    <color name="swipe_delete_background">#D32F2F</color>
+    <color name="swipe_edit_background">#388E3C</color>
+
+    <color name="card_background">#253141</color>
 </resources>

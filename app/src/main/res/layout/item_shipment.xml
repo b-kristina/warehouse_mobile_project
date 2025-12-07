@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/tvShipmentDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:text="Дата: 01.01.2025" />
+
+    <TextView
+        android:id="@+id/tvProductTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:text="Название товара" />
+
+    <TextView
+        android:id="@+id/tvProviderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:text="Поставщик" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:text="Количество: 10" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/filter_button_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="Удалить"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

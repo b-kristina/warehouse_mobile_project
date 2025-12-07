@@ -33,11 +33,15 @@ class ProviderAdapter(
             tvInn.text = "ИНН: ${provider.inn}"
             tvAddress.text = provider.companyAddress
 
-            btnEdit.setOnClickListener {
-                onItemClick(provider)
-            }
         }
     }
 
     override fun getItemCount() = providers.size
+
+    fun getProviderAt(position: Int): ProviderResponse {
+        if (position < 0 || position >= providers.size) {
+            throw IllegalStateException("Item not found at $position")
+        }
+        return providers[position]
+    }
 }

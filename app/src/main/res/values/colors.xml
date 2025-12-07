@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Базовые цвета -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -8,19 +9,27 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- Фон экрана -->
+    <color name="screen_background">#FFFFFF</color>
 
-    <color name="screen_background">@android:color/white</color>
+    <!-- Диалог: светлая тема -->
+    <color name="dialog_background">#FFFFFF</color>
+    <color name="dialog_text">#1F2937</color>
+    <color name="dialog_button">#1F2937</color>
 
-    <!-- Кнопка "Фильтры" -->
+    <!-- 🔹 Добавляем недостающие -->
     <color name="filter_button_background">#1F2937</color>
-
-    <!-- Фон диалога фильтров -->
-    <color name="filter_dialog_background">#1F2937</color>
+    <color name="button_background">#1F2937</color>
 
     <!-- Синие оттенки -->
-    <color name="button_background">#1F2937</color>
     <color name="blue_800">#1F2937</color>
     <color name="blue_900">#111827</color>
     <color name="blue_300">#93C5FD</color>
     <color name="blue_700">#3B82F6</color>
+
+    <!-- Swipe -->
+    <color name="swipe_delete_background">#FF5252</color>
+    <color name="swipe_edit_background">#4CAF50</color>
+
+    <color name="card_background">#FFFFFF</color>
 </resources>
