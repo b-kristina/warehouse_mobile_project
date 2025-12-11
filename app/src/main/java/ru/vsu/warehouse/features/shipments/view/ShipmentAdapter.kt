@@ -33,12 +33,12 @@ class ShipmentAdapter(
             tvProductTitle.text = shipment.productTitle
             tvProviderName.text = shipment.providerName
             tvQuantity.text = "Количество: ${shipment.shipmentQuantity}"
-
-            btnDelete.setOnClickListener {
-                onDeleteClick(shipment.shipmentId)
-            }
         }
     }
 
     override fun getItemCount() = shipments.size
+
+    fun getShipmentAt(position: Int): ShipmentResponse {
+        return shipments[position]
+    }
 }

@@ -12,7 +12,8 @@ import java.time.format.DateTimeFormatter
 
 object RetrofitClient {
 //    private const val BASE_URL = "http://10.0.2.2:8080/"
-    private const val BASE_URL = "http://192.168.0.103:8080/"
+    private const val BASE_URL = "http://192.168.220.189:8080/"
+//    private const val BASE_URL = "http://192.168.0.103:8080/"
 
 
     private val gson: Gson by lazy {
