@@ -9,6 +9,7 @@ import ru.vsu.warehouse.features.products.view.ProductsActivity
 import ru.vsu.warehouse.features.providers.view.ProvidersActivity
 import ru.vsu.warehouse.features.shipments.view.ShipmentsActivity
 import ru.vsu.warehouse.features.supplies.view.SuppliesActivity
+import ru.vsu.warehouse.features.writeoffs.view.WriteOffsActivity
 
 class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,9 @@ class WelcomeActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.btnShipments).setOnClickListener {
             startActivity(Intent(this, ShipmentsActivity::class.java))
+        }
+        findViewById<Button>(R.id.btnWriteOffs).setOnClickListener {
+            startActivity(Intent(this, WriteOffsActivity::class.java))
         }
 
 

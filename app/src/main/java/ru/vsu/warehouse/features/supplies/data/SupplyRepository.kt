@@ -24,7 +24,7 @@ class SupplyRepository {
     suspend fun deleteSupply(id: Int) {
         val response = api.deleteSupply(id)
         if (!response.isSuccessful) {
-            throw Exception("HTTP ${response.code()}: ${response.message()}")
+            throw Exception("Скорее всего товар уже уехал, HTTP ${response.code()}: ${response.message()}")
         }
     }
 }

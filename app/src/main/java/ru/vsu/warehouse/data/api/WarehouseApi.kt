@@ -11,9 +11,11 @@ import ru.vsu.warehouse.data.model.ProviderResponse
 import ru.vsu.warehouse.data.model.ProviderSimpleResponse
 import ru.vsu.warehouse.data.model.ShipmentResponse
 import ru.vsu.warehouse.data.model.SupplyResponse
+import ru.vsu.warehouse.data.model.WriteOffResponse
 import ru.vsu.warehouse.features.providers.data.model.ProviderUpdateRequest
 import ru.vsu.warehouse.features.shipments.data.model.ShipmentCreateRequest
 import ru.vsu.warehouse.features.supplies.data.model.SupplyCreateRequest
+import ru.vsu.warehouse.features.writeoffs.data.model.WriteOffCreateRequest
 
 interface WarehouseApi {
 
@@ -96,4 +98,22 @@ interface WarehouseApi {
 
     @GET("api/shipments/providers/simple")
     suspend fun getSimpleProvidersForShipments(): List<ProviderSimpleResponse>
+
+    // списания
+    @GET("api/write-offs/filtered")
+    suspend fun getWriteOffs(
+        @Query("reasons") reasons: List<String>? = null,
+        @Query("includeNonStandard") includeNonStandard: Boolean = false,
+        @Query("page") page: Int = 0,
+        @Query("size") size: Int = 15
+    ): PageResponse<WriteOffResponse>
+
+    @POST("api/write-offs")
+    suspend fun createWriteOff(@Body request: WriteOffCreateRequest): WriteOffResponse
+
+    @DELETE("api/write-offs/{id}")
+    suspend fun deleteWriteOff(@Path("id") id: Int): Response<Unit>
+
+    @GET("api/write-offs/simple")
+    suspend fun getSimpleProductsForWriteOffs(): List<ProductSimpleResponse>
 }

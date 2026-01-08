@@ -37,6 +37,10 @@
         <activity
             android:name=".features.shipments.view.ShipmentsActivity"
             android:exported="false" />
+        <!--    списания    -->
+        <activity
+            android:name=".features.writeoffs.view.WriteOffsActivity"
+            android:exported="false" />
 
         <activity
             android:name=".WelcomeActivity"
