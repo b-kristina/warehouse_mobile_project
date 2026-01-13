@@ -97,3 +97,11 @@
 - **Асинхронность:** Coroutines + Flow
 - **Сеть:** Retrofit
 - **UI:** Material Components
+
+  
+---
+
+## 🎥 Демонстрация работы приложения
+
+### Основные функции
+https://github.com/user-attachments/assets/35d4945c-fe5b-4f9d-9b31-881652d49cbf
